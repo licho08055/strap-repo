@@ -12,7 +12,7 @@ class Planet(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=300)
     code = models.CharField(max_length=20)
-    picture_url = models.CharField(max_length=50)
+    picture_url = models.CharField(max_length=200)
     
     def __str__(self):
         return self.name
@@ -21,7 +21,7 @@ class Planet(models.Model):
 class Character(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=300)
-    picture_url = models.CharField(max_length=50)
+    picture_url = models.CharField(max_length=200)
     planet =  models.ForeignKey(Planet, on_delete=models.CASCADE)
     people = models.ManyToManyField(People)
     

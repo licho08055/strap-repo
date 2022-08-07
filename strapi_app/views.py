@@ -1,3 +1,4 @@
+from base64 import standard_b64decode
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -9,7 +10,7 @@ from .models import Planet,Character
 from .serializers import PlanetSerializer,CharacterSerializer
  
 
-
+ 
 
 @api_view(['GET', 'POST'])
 def CharacterListCreateView(request):
@@ -18,12 +19,12 @@ def CharacterListCreateView(request):
         serializer = CharacterSerializer(charac, many=True)
         return Response(serializer.data)
     
-    elif request.method == 'POST':
-        serializer = CharacterSerializer(data=request.data)
+    elif request.method=='POST':
+        serializer=CharacterSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_403_FORBIDDEN)
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_403_FORBIDDEN)
     
     
 @api_view(['GET', 'PUT', 'DELETE'])
