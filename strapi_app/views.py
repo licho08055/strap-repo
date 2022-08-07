@@ -82,7 +82,8 @@ def DetailUpdateDeleteView(request, id):
         return Response(serializer.data)
     
     elif request.method == 'PUT':
-        serializer = PlanetSerializer(detail_object, data=request.data)
+        plan = get_object_or_404(Planet,id=id)
+        serializer = PlanetSerializer( plan, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
