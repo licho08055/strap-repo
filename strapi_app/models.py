@@ -3,10 +3,16 @@ from django.db import models
 # Create your models here.
 
 
-class People(models.Model):
-    user_id = models.IntegerField()
-    friends_id = models.IntegerField()
+def get_default_something():
+        return {'name': [], 'numberFriends': [1]}
 
+class People(models.Model):
+    friends = models.JSONField(max_length=100,default=get_default_something)
+    
+    def __str__(self):
+        return self.friends
+    
+    
 
 class Planet(models.Model):
     name = models.CharField(max_length=20)
@@ -17,7 +23,7 @@ class Planet(models.Model):
     def __str__(self):
         return self.name
     
-    
+      
 class Character(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=300)

@@ -3,11 +3,12 @@ from rest_framework import serializers
 from .models import Planet,Character,People
 
 class PeopleSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = People
         fields = [
-            'user_id',
-            'friends_id',
+            'id',
+            'friends',
         ]
 
 
@@ -24,6 +25,9 @@ class PlanetSerializer(serializers.ModelSerializer):
         
         
 class CharacterSerializer(serializers.ModelSerializer):
+    
+    
+    
     class Meta:
         model = Character
         fields = [
