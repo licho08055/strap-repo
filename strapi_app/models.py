@@ -4,13 +4,12 @@ from django.db import models
 
 
 def get_default_something():
-        return {'name': [], 'numberFriends': [1]}
+        return {'name': ['ben'], 'numberFriends': [1]}
 
 class People(models.Model):
     friends = models.JSONField(max_length=100,default=get_default_something)
     
-    def __str__(self):
-        return self.friends
+    
     
     
 
