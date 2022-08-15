@@ -1,1 +1,1 @@
-web: gunicorn strap_post.wsgi 
+web: gunicorn strap_post.wsgi
